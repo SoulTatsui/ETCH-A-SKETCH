@@ -1,8 +1,6 @@
 //getting needed variables
 const container = document.querySelector('#container');
 const resetBtn = document.querySelector('#reset');
-const gridSize = document.querySelector('#gridSize');
-const grabDivAfter = '';
 
 let userRow = prompt('How many rows?');
 let userCol = prompt('How many columns?');
@@ -14,9 +12,6 @@ function askingUser() {
     makeRows(userRow, userCol);
 
 }
-
-
-gridSize.addEventListener('click', askingUser);
 
 function removeElements(elements) {
     for (var i = 0; i < elements.length; i++) {
