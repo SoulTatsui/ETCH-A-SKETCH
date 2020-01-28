@@ -4,22 +4,29 @@ const resetBtn = document.querySelector('#reset');
 const gridSize = document.querySelector('#gridSize');
 const grabDivAfter = '';
 
-let userRow = 16;
-let userCol = 16;
+let userRow = prompt('How many rows?');
+let userCol = prompt('How many columns?');
 
 function askingUser() {
     userRow = prompt('How many rows?');
     userCol = prompt('How many columns?');
 
     makeRows(userRow, userCol);
-    grabDivAfter = document.querySelectorAll('.grid-item');
+
 }
 
 
 gridSize.addEventListener('click', askingUser);
 
+function removeElements(elements) {
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].parentNode.removeChild(elements[i]);
+    }
+}
+
 resetBtn.addEventListener('click', function () {
-    container.innerHTML = '';
+    //removeElements(document.querySelectorAll('.grid-item'));
+    location.reload();
 });
 
 function makeRows(rows, cols) {
@@ -29,13 +36,11 @@ function makeRows(rows, cols) {
         let cell = document.createElement('div');
         container.appendChild(cell).className = 'grid-item';
     }
+    console.log('fuck');
+
 }
 
-
 makeRows(userRow, userCol);
-
-
-
 
 let hue = 0;
 
@@ -50,5 +55,5 @@ let divs = document.querySelectorAll('.grid-item');
 resetBtn.addEventListener('click', reset);
 
 
-divs.forEach(div => div.addEventListener('mousemove', hoverMe));
-divs.forEach(div => div.addEventListener('mouseout', hoverMe));
+document.querySelectorAll('.grid-item').forEach(div => div.addEventListener('mousemove', hoverMe));
+document.querySelectorAll('.grid-item').forEach(div => div.addEventListener('mouseout', hoverMe));
